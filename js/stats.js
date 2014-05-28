@@ -1,7 +1,8 @@
-var DATA_SIZE = 5;
+var DATA_SIZE = 8;
 
 var inputElements = [];
 var outputMean = null;
+var outputMax = null;
 
 
 /**
@@ -38,20 +39,46 @@ var calcMean = function(){
 
     if(n > 0){
         outputMean.textContent = sum / n;
+    }else{
+        outputMean.textContent = "数値を入力してくれなきゃ計算できないん"
     }
 };
+
+var calcMax = function(){
+    var index = 0;
+    var n = 0;
+
+    var max = Math.max.apply(null,inputElements);
+
+        index = index + 1;
+
+//    if(n > 0){
+        outputMax.textContent = max;
+//    }else{
+//        outputMax.textContent = "数値を入力してくれなきゃ計算できないん"
+ //   }
+};
+
 
 var calcStats = function(){
     calcMean();
 };
+var calcStats2 = function(){
+    calcMax();
+};
+
 
 var initApp = function(){
     initInputElements();
 
     outputMean = document.querySelector("#mean");
+    outputMax = document.querySelector("#max");
 
     var calcMeanButton = document.querySelector("#start");
     calcMeanButton.addEventListener("click", calcStats);
+
+    var calcMaxButton = document.querySelector("#start2");
+    calcMaxButton.addEventListener("click", calcStats2);
 };
 
 initApp();
